@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Audiowide', 'Rajdhani', sans-serif;
+  --font-sans: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #000000;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Fixed-to-viewport gradient (not flat black) so the bike's ground contact
+   shadow has something to darken against — pure black-on-black is
+   invisible. Must be its own fixed layer, not a body background: body's
+   height is the whole ~750vh scrollable page, so percentage-based gradient
+   positions would land far down the document instead of on-screen. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 55% at 50% 66%, #9a9aa0 0%, #55555a 25%, #232325 50%, #0a0a0b 75%, #000000 100%);
+}
+
+canvas {
+  outline: none;
+}
